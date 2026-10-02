@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-surface mb-5 text-sm uppercase tracking-wider">Platform</h4>
+            <h4 className="font-semibold text-gold mb-5 text-sm uppercase tracking-wider">Platform</h4>
             <ul className="flex flex-col gap-3 text-sm text-slate-400">
               <li><a href="#" className="hover:text-gold transition-colors">Asset Management</a></li>
               <li><a href="#" className="hover:text-gold transition-colors">Work Orders</a></li>
@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-surface mb-5 text-sm uppercase tracking-wider">Solutions</h4>
+            <h4 className="font-semibold text-gold mb-5 text-sm uppercase tracking-wider">Solutions</h4>
             <ul className="flex flex-col gap-3 text-sm text-slate-400">
               <li><a href="#" className="hover:text-gold transition-colors">Asset Operations</a></li>
               <li><a href="#" className="hover:text-gold transition-colors">Field Service</a></li>
@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-surface mb-5 text-sm uppercase tracking-wider">Company</h4>
+            <h4 className="font-semibold text-gold mb-5 text-sm uppercase tracking-wider">Company</h4>
             <ul className="flex flex-col gap-3 text-sm text-slate-400">
               <li><a href="#" className="hover:text-gold transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-gold transition-colors">Careers</a></li>

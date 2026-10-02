@@ -122,7 +122,7 @@ const Home = () => {
       */}
       <section className="py-20 lg:py-28 bg-surface">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 text-center max-w-4xl">
-          <div className="text-xs font-bold tracking-widest text-navy/50 uppercase mb-4">ONE CONNECTED OPERATING MODEL</div>
+          <div className="text-xs font-bold tracking-widest text-gold uppercase mb-4">ONE CONNECTED OPERATING MODEL</div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy mb-8 tracking-tight">
             Bring assets, people and service workflows into one operational view.
           </h2>
@@ -214,7 +214,7 @@ const Home = () => {
           <div className="flex-1 w-full flex flex-col gap-4 relative">
             {/* Visual Lifecycle Layout */}
             <div className="bg-navy-light rounded-xl border border-border-dark shadow-sm p-6 flex flex-col gap-3 ml-0 lg:ml-12 z-20">
-              <div className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-1">Asset Metadata</div>
+              <div className="text-xs font-semibold text-gold uppercase tracking-widest mb-1">Asset Metadata</div>
               <div className="flex justify-between items-center pb-2 border-b border-border-dark">
                 <span className="text-sm font-medium text-surface">PMP-Water-12</span>
                 <span className="text-xs px-2 py-0.5 rounded bg-functional-success/10 text-functional-success font-medium border border-functional-success/20">ACTIVE</span>
@@ -278,7 +278,7 @@ const Home = () => {
                 </div>
                 
                 <div className="p-4 rounded-lg bg-surface-alt border border-border">
-                  <div className="text-xs font-semibold text-slate-400 uppercase mb-3">Required Checklist</div>
+                  <div className="text-xs font-semibold text-gold uppercase mb-3">Required Checklist</div>
                   <div className="space-y-3 text-sm font-medium text-navy">
                     <div className="flex items-center gap-3 opacity-50 line-through"><CheckCircle2 size={16} className="text-functional-success" /> Lockout/Tagout confirmed</div>
                     <div className="flex items-center gap-3 opacity-50 line-through"><CheckCircle2 size={16} className="text-functional-success" /> Drain system pressure</div>
@@ -291,7 +291,7 @@ const Home = () => {
               {/* Right Column: Execution */}
               <div className="w-full md:w-72 flex flex-col gap-4">
                 <div className="p-4 rounded-lg bg-surface border border-border shadow-sm">
-                  <div className="text-xs font-semibold text-slate-400 uppercase mb-2">Parts Required</div>
+                  <div className="text-xs font-semibold text-gold uppercase mb-2">Parts Required</div>
                   <div className="flex items-center justify-between text-sm mb-1">
                     <span className="font-medium text-navy">O-Ring Seal Pack</span>
                     <span className="text-slate-500">x2</span>
