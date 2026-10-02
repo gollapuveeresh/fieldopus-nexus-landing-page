@@ -251,7 +251,7 @@ const MegaMenuPanel = ({ menuKey, visible }) => {
                 style={{ borderLeft: ci > 0 ? `1px solid ${C.border}` : 'none' }}
               >
                 <div className="text-[10px] font-bold uppercase tracking-widest mb-4 pb-2"
-                  style={{ color: C.muted, borderBottom: `1px solid ${C.border}` }}>
+                  style={{ color: C.gold, borderBottom: `1px solid ${C.border}` }}>
                   {col.heading}
                 </div>
                 <div className="flex flex-col gap-1">
@@ -430,7 +430,7 @@ const MobileAccordion = ({ label, data }) => {
         <div className="pb-4 flex flex-col gap-4 mt-2">
           {data.columns.map((col, ci) => (
             <div key={ci}>
-              <div className="text-[11px] font-[700] uppercase tracking-widest mb-2 px-2" style={{ color: '#64748B' }}>
+              <div className="text-[11px] font-[700] uppercase tracking-widest mb-2 px-2" style={{ color: C.gold }}>
                 {col.heading}
               </div>
               <div className="flex flex-col gap-1">
