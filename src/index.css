@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0B1F3B;
+  --color-navy-light: #162A4B;
+  --color-navy-dark: #051124;
+  --color-navy-deep: #071426;
+  
+  --color-gold: #F5C451;
+  --color-gold-hover: #fcd36c;
+  
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F8FAFC;
+  --color-background-light: #F5F7FA;
+  
+  --color-border: #E2E8F0;
+  --color-border-dark: rgba(255,255,255,0.08);
+  
+  --color-functional-success: #10B981;
+  --color-functional-warning: #F59E0B;
+  --color-functional-error: #EF4444;
+  --color-functional-info: #3B82F6;
+
+  --shadow-premium: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-dropdown: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-background-light text-navy antialiased;
+  }
+}
+
+@layer utilities {
+  .hero-bg {
+    background-color: #071426;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(245, 196, 81, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+  }
+  
+  .tech-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+}
