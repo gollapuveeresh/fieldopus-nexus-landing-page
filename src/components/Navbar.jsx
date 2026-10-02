@@ -10,6 +10,7 @@ import Logo from './Logo';
    COLOR TOKENS
 ───────────────────────────────────────────────*/
 const C = {
+  // Dark theme (for mega menu)
   navy:       '#0A1627',
   navyMid:    '#101F34',
   navyCard:   '#16263D',
@@ -20,6 +21,14 @@ const C = {
   text:       '#FFFFFF',
   muted:      '#94A3B8',
   subtle:     '#CBD5E1',
+
+  // Light theme (for navbar top bar & mobile menu surface)
+  navBg:      '#FFFFFF',
+  navText:    '#0B1F3B',
+  navBorder:  '#E5E7EB',
+  navShadow:  '0 1px 8px rgba(11,31,59,0.06)',
+  navyBtn:    '#0B1F3B',
+  navyBtnHov: '#162A4B',
 };
 
 /* ─────────────────────────────────────────────
@@ -139,7 +148,7 @@ const MEGA_DATA = {
 const MEGA_KEYS = Object.keys(MEGA_DATA);
 
 /* ─────────────────────────────────────────────
-   ICON CONTAINER
+   ICON CONTAINER (Dark Mega Menu)
 ───────────────────────────────────────────────*/
 const IconBox = ({ icon: Icon, active }) => (
   <div
@@ -151,7 +160,7 @@ const IconBox = ({ icon: Icon, active }) => (
 );
 
 /* ─────────────────────────────────────────────
-   MEGA MENU ITEM
+   MEGA MENU ITEM (Dark Mega Menu)
 ───────────────────────────────────────────────*/
 const MegaItem = ({ icon, title, desc }) => {
   const [hov, setHov] = useState(false);
@@ -179,7 +188,7 @@ const MegaItem = ({ icon, title, desc }) => {
 };
 
 /* ─────────────────────────────────────────────
-   RIGHT-SIDE HIGHLIGHT CARD
+   RIGHT-SIDE HIGHLIGHT CARD (Dark Mega Menu)
 ───────────────────────────────────────────────*/
 const HighlightCard = ({ card }) => {
   const [hov, setHov] = useState(false);
@@ -210,8 +219,7 @@ const HighlightCard = ({ card }) => {
 };
 
 /* ─────────────────────────────────────────────
-   MEGA MENU PANEL (full-width, rendered inside
-   per-trigger wrapper so hover is continuous)
+   MEGA MENU PANEL (Dark full-width dropdown)
 ───────────────────────────────────────────────*/
 const MegaMenuPanel = ({ menuKey, visible }) => {
   const data = MEGA_DATA[menuKey];
@@ -221,7 +229,7 @@ const MegaMenuPanel = ({ menuKey, visible }) => {
     <div
       className="fixed left-0 right-0 transition-all duration-200"
       style={{
-        top:           '76px', // Seamless gap relative to viewport
+        top:           '76px', // Matches navbar height exactly
         transform:     `translateY(${visible ? '0px' : '-4px'})`,
         opacity:       visible ? 1 : 0,
         pointerEvents: visible ? 'auto' : 'none',
@@ -267,9 +275,7 @@ const MegaMenuPanel = ({ menuKey, visible }) => {
 };
 
 /* ─────────────────────────────────────────────
-   HOVER WRAPPER  ← the key piece
-   Wraps trigger button + mega panel so the full
-   area is one continuous hover region.
+   HOVER WRAPPER (Light text for white navbar)
 ───────────────────────────────────────────────*/
 const HoverMenuWrapper = ({ menuKey, activeMenu, onOpen, onClose }) => {
   const isOpen = activeMenu === menuKey;
@@ -284,8 +290,8 @@ const HoverMenuWrapper = ({ menuKey, activeMenu, onOpen, onClose }) => {
     >
       {/* Trigger button */}
       <button
-        className="relative flex items-center gap-1 text-[15px] font-medium py-2 h-full transition-colors duration-200 focus:outline-none select-none"
-        style={{ color: active ? C.gold : C.text }}
+        className="relative flex items-center gap-1 text-[15px] font-[500] py-2 h-full transition-colors duration-200 focus:outline-none select-none"
+        style={{ color: active ? C.gold : C.navText }}
         onMouseEnter={() => setLabelHov(true)}
         onMouseLeave={() => setLabelHov(false)}
         aria-expanded={isOpen}
@@ -297,7 +303,8 @@ const HoverMenuWrapper = ({ menuKey, activeMenu, onOpen, onClose }) => {
           className="transition-transform duration-200"
           style={{
             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-            color: active ? C.gold : C.muted,
+            color: active ? C.gold : C.navText,
+            opacity: active ? 1 : 0.6
           }}
         />
         <span
@@ -306,7 +313,7 @@ const HoverMenuWrapper = ({ menuKey, activeMenu, onOpen, onClose }) => {
         />
       </button>
 
-      {/* Mega panel — inside the same wrapper so hover is continuous */}
+      {/* Mega panel */}
       <MegaMenuPanel menuKey={menuKey} visible={isOpen} />
     </div>
   );
@@ -320,8 +327,8 @@ const NavLink = ({ children, href = '#' }) => {
   return (
     <a
       href={href}
-      className="relative flex items-center text-[15px] font-medium py-2 transition-colors duration-200"
-      style={{ color: hov ? C.gold : C.text }}
+      className="relative flex items-center text-[15px] font-[500] py-2 transition-colors duration-200"
+      style={{ color: hov ? C.gold : C.navText }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
     >
@@ -335,19 +342,24 @@ const NavLink = ({ children, href = '#' }) => {
 };
 
 /* ─────────────────────────────────────────────
-   GOLD CTA BUTTON
+   NAVY CTA BUTTON (Replaces GoldButton)
 ───────────────────────────────────────────────*/
-const GoldButton = ({ children, className = '', ...props }) => {
+const NavyButton = ({ children, className = '', ...props }) => {
   const [hov, setHov] = useState(false);
   return (
     <button
-      className={`inline-flex items-center justify-center font-semibold transition-all duration-200 rounded-[10px] px-6 py-3 text-[15px] leading-none ${className}`}
-      style={{ background: hov ? C.goldHover : C.gold, color: C.navy }}
+      className={`group inline-flex items-center justify-center font-[600] transition-all duration-200 rounded-[10px] px-6 py-3 text-[15px] leading-none ${className}`}
+      style={{ background: hov ? C.navyBtnHov : C.navyBtn, color: '#FFFFFF' }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       {...props}
     >
       {children}
+      <ArrowUpRight 
+        size={17} 
+        className="ml-1.5 transition-transform duration-200" 
+        style={{ transform: hov ? 'translate(2px, -2px)' : 'translate(0px, 0px)' }}
+      />
     </button>
   );
 };
@@ -360,8 +372,8 @@ const SignInLink = () => {
   return (
     <a
       href="#"
-      className="text-[15px] font-medium transition-colors duration-200"
-      style={{ color: hov ? C.gold : C.text }}
+      className="text-[15px] font-[600] transition-colors duration-200"
+      style={{ color: hov ? C.gold : C.navText }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
     >
@@ -378,8 +390,11 @@ const MobileNavLink = ({ children, href = '#', centered = false }) => {
   return (
     <a
       href={href}
-      className={`block px-3 py-2 text-[14px] font-medium rounded-lg transition-all duration-150 ${centered ? 'text-center' : ''}`}
-      style={{ color: hov ? C.gold : C.text, background: hov ? C.navyMid : 'transparent' }}
+      className={`block px-3 py-2 text-[15px] font-[500] rounded-lg transition-all duration-150 ${centered ? 'text-center' : ''}`}
+      style={{ 
+        color: hov ? C.gold : C.navText, 
+        background: hov ? '#F1F5F9' : 'transparent' 
+      }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
     >
@@ -389,15 +404,15 @@ const MobileNavLink = ({ children, href = '#', centered = false }) => {
 };
 
 /* ─────────────────────────────────────────────
-   MOBILE ACCORDION (tap/click — unchanged)
+   MOBILE ACCORDION (Light Surface)
 ───────────────────────────────────────────────*/
 const MobileAccordion = ({ label, data }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ borderBottom: `1px solid ${C.border}` }}>
+    <div style={{ borderBottom: `1px solid ${C.navBorder}` }}>
       <button
-        className="w-full flex items-center justify-between py-4 text-[15px] font-medium transition-colors duration-200"
-        style={{ color: open ? C.gold : C.text }}
+        className="w-full flex items-center justify-between py-4 text-[15px] font-[600] transition-colors duration-200"
+        style={{ color: open ? C.gold : C.navText }}
         onClick={() => setOpen(p => !p)}
         aria-expanded={open}
       >
@@ -405,17 +420,17 @@ const MobileAccordion = ({ label, data }) => {
         <ChevronDown
           size={16}
           className="transition-transform duration-200"
-          style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)', color: open ? C.gold : C.muted }}
+          style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)', color: open ? C.gold : C.navText, opacity: open ? 1 : 0.6 }}
         />
       </button>
       <div
         className="overflow-hidden transition-all duration-300"
         style={{ maxHeight: open ? '600px' : '0px' }}
       >
-        <div className="pb-4 flex flex-col gap-4">
+        <div className="pb-4 flex flex-col gap-4 mt-2">
           {data.columns.map((col, ci) => (
             <div key={ci}>
-              <div className="text-[10px] font-bold uppercase tracking-widest mb-2 px-2" style={{ color: C.muted }}>
+              <div className="text-[11px] font-[700] uppercase tracking-widest mb-2 px-2" style={{ color: '#64748B' }}>
                 {col.heading}
               </div>
               <div className="flex flex-col gap-1">
@@ -432,14 +447,14 @@ const MobileAccordion = ({ label, data }) => {
 };
 
 /* ─────────────────────────────────────────────
-   MOBILE HAMBURGER
+   MOBILE HAMBURGER (Light surface)
 ───────────────────────────────────────────────*/
 const MobileToggle = ({ open, onClick }) => {
   const [hov, setHov] = useState(false);
   return (
     <button
       className="lg:hidden p-1 transition-colors duration-200 focus:outline-none"
-      style={{ color: hov ? C.gold : C.text }}
+      style={{ color: hov ? C.gold : C.navText }}
       onClick={onClick}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
@@ -496,9 +511,9 @@ const Navbar = () => {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background:   C.navy,
-        borderBottom: `1px solid ${(scrolled || hasOpenMenu) ? C.border : 'transparent'}`,
-        boxShadow:    scrolled ? '0 2px 16px rgba(0,0,0,0.35)' : 'none',
+        background:   C.navBg,
+        borderBottom: `1px solid ${C.navBorder}`,
+        boxShadow:    scrolled ? C.navShadow : 'none',
       }}
       aria-label="Main navigation"
     >
@@ -507,10 +522,10 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="flex-shrink-0 z-50">
-          <Logo />
+          <Logo theme="light" />
         </div>
 
-        {/* Desktop nav — each mega item is self-contained hover wrapper */}
+        {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8 h-full">
           {MEGA_KEYS.map((key) => (
             <HoverMenuWrapper
@@ -528,42 +543,40 @@ const Navbar = () => {
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-6 z-50">
           <SignInLink />
-          <GoldButton>
+          <NavyButton>
             Get Started
-            <ArrowUpRight size={17} className="ml-1.5" />
-          </GoldButton>
+          </NavyButton>
         </div>
 
         {/* Mobile hamburger */}
         <MobileToggle open={mobileOpen} onClick={() => setMobileOpen(p => !p)} />
       </div>
 
-      {/* ── MOBILE MENU (accordion / click) ── */}
+      {/* ── MOBILE MENU (accordion / tap) ── */}
       <div
         className="lg:hidden overflow-y-auto transition-all duration-300"
         style={{
-          background:  C.navy,
+          background:  C.navBg,
           maxHeight:   mobileOpen ? 'calc(100vh - 76px)' : '0px',
           overflow:    mobileOpen ? 'auto' : 'hidden',
-          borderTop:   mobileOpen ? `1px solid ${C.border}` : 'none',
+          borderTop:   mobileOpen ? `1px solid ${C.navBorder}` : 'none',
         }}
       >
         <div className="px-6 py-4">
           {MEGA_KEYS.map((key) => (
             <MobileAccordion key={key} label={key} data={MEGA_DATA[key]} />
           ))}
-          <div className="py-3" style={{ borderBottom: `1px solid ${C.border}` }}>
+          <div className="py-3" style={{ borderBottom: `1px solid ${C.navBorder}` }}>
             <MobileNavLink href="#">Features</MobileNavLink>
           </div>
-          <div className="py-3" style={{ borderBottom: `1px solid ${C.border}` }}>
+          <div className="py-3" style={{ borderBottom: `1px solid ${C.navBorder}` }}>
             <MobileNavLink href="#">About</MobileNavLink>
           </div>
           <div className="pt-5 pb-6 flex flex-col gap-3">
             <MobileNavLink href="#" centered>Sign In</MobileNavLink>
-            <GoldButton className="w-full justify-center">
+            <NavyButton className="w-full justify-center">
               Get Started
-              <ArrowUpRight size={17} className="ml-1.5" />
-            </GoldButton>
+            </NavyButton>
           </div>
         </div>
       </div>
