@@ -3,7 +3,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
 
 /* ─── Inline-safe constants for v4 token reliability ─── */
-const NAVY       = '#0B1F3B';
+const NAVY       = '#0A1627';
 const NAVY_LIGHT = '#162A4B';
 const GOLD       = '#F5C451';
 const GOLD_HOVER = '#fcd36c';
