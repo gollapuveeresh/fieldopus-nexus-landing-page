@@ -1,118 +1,32 @@
 import React from 'react';
 import Button from '../components/Button';
-import { ArrowRight, ArrowUpRight, BarChart3, Wrench, Package, Activity, Map, Clock, Network, Building2, Zap, FileText, CheckCircle2, Cloud, Server, Database } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Wrench, Package, Map, Clock, Network, Building2, Zap, FileText, CheckCircle2, Cloud, Server, Database } from 'lucide-react';
+import fieldnexusvideo from '../assets/fieldnexusvideo.mp4';
 
 const Home = () => {
   return (
     <div className="w-full">
       {/* 
         ========================================================
-        HERO SECTION (DARK)
+        HERO SECTION (FULL VIDEO)
         ========================================================
       */}
-      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 hero-bg overflow-hidden">
-        <div className="absolute inset-0 tech-grid opacity-30 pointer-events-none"></div>
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-10">
-          
-          {/* Hero Content */}
-          <div className="flex-1 w-full max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-border-dark mb-8 backdrop-blur-sm">
-              <div className="w-2 h-2 rounded-full bg-gold"></div>
-              <span className="text-xs font-semibold tracking-wider text-surface uppercase">Enterprise Field Operations Platform</span>
-            </div>
-            
-            <h1 className="text-[42px] leading-[1.05] md:text-[56px] lg:text-[72px] lg:leading-[1] font-extrabold text-surface mb-8 tracking-tight">
-              Connected Operations.<br/>
-              Smarter <span className="text-gold">Field Service.</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-surface/80 mb-10 max-w-xl font-light leading-relaxed">
-              Connect assets, maintenance, field teams, service workflows and operational data in one unified platform.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="gold" className="text-base px-8 py-4 group">
-                Get Started 
-                <ArrowUpRight size={20} className="ml-1.5 transition-transform duration-200 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]" />
-              </Button>
-              <Button variant="secondary" className="text-base px-8 py-4 group text-surface border-white/20 hover:border-gold hover:text-gold hover:bg-transparent">
-                Explore Platform 
-                <ArrowRight size={20} className="ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Hero Product Visual (STATIC PREVIEW) */}
-          <div className="flex-1 w-full max-w-2xl relative">
-            <div className="relative w-full aspect-[4/3] bg-navy-deep rounded-xl border border-border-dark shadow-2xl p-4 flex flex-col gap-4 overflow-hidden backdrop-blur-sm">
-              
-              {/* Header Bar */}
-              <div className="flex items-center justify-between border-b border-border-dark pb-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded bg-navy-light flex items-center justify-center border border-border-dark">
-                    <Activity size={16} className="text-gold" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-surface">FieldOps Nexus</div>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-wide">Operations Platform</div>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <div className="w-2 h-2 rounded-full bg-white/10"></div>
-                  <div className="w-2 h-2 rounded-full bg-white/10"></div>
-                  <div className="w-2 h-2 rounded-full bg-white/10"></div>
-                </div>
-              </div>
-
-              {/* Workflow Nodes */}
-              <div className="flex-1 relative flex flex-col justify-center">
-                
-                {/* Node 1: Asset */}
-                <div className="absolute top-4 left-4 w-48 bg-navy-light border border-border-dark rounded-lg p-3 z-10 animate-[fade-in_1s_ease-out_0.2s_both]">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="text-[10px] font-medium text-slate-400 uppercase">Asset Status</div>
-                    <div className="w-2 h-2 rounded-full bg-functional-success shadow-[0_0_8px_#10B981]"></div>
-                  </div>
-                  <div className="font-semibold text-surface text-sm">RTU-Roof-04</div>
-                  <div className="text-xs text-slate-400 mt-1">HVAC System • Zone B</div>
-                </div>
-
-                {/* Node 2: Work Order */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 bg-navy border border-gold/30 rounded-lg p-4 shadow-[0_0_30px_rgba(245,196,81,0.1)] z-20 animate-[fade-in_1s_ease-out_0.4s_both]">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="text-[10px] font-bold text-gold uppercase tracking-wider">Work Order Active</div>
-                    <span className="text-[10px] bg-functional-error/10 text-functional-error px-2 py-0.5 rounded font-medium border border-functional-error/20">CRITICAL</span>
-                  </div>
-                  <div className="font-semibold text-surface text-sm mb-1">WO-2026-8901</div>
-                  <div className="text-xs text-slate-400 line-clamp-2">Routine filter replacement & pressure test required immediately.</div>
-                </div>
-
-                {/* Node 3: Technician / Parts */}
-                <div className="absolute bottom-4 right-4 w-52 bg-navy-light border border-border-dark rounded-lg p-3 z-10 animate-[fade-in_1s_ease-out_0.6s_both]">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-navy border border-border-dark flex items-center justify-center text-xs font-bold text-surface">AS</div>
-                    <div>
-                      <div className="text-xs font-semibold text-surface">Alex Smith</div>
-                      <div className="text-[10px] text-slate-400">Dispatched • 12m away</div>
-                    </div>
-                  </div>
-                  <div className="h-px w-full bg-border-dark mb-2"></div>
-                  <div className="flex items-center justify-between text-[10px] text-slate-400">
-                    <span className="flex items-center gap-1"><Package size={10} /> Parts allocated</span>
-                    <span className="text-functional-success font-medium">Ready</span>
-                  </div>
-                </div>
-
-                {/* Abstract Connectors */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
-                  <path d="M100,60 C 150,60 150,150 200,150" stroke="rgba(245,196,81,0.3)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" className="animate-[pulse_2s_ease-in-out_infinite]" />
-                  <path d="M350,150 C 400,150 400,250 350,250" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
-                </svg>
-              </div>
-
-            </div>
-          </div>
-        </div>
+      <section style={{ position: 'relative', width: '100%', height: '100vh' }}>
+        <video
+          src={fieldnexusvideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
       </section>
 
       {/* 

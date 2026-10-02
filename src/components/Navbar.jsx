@@ -22,13 +22,13 @@ const C = {
   muted:      '#94A3B8',
   subtle:     '#CBD5E1',
 
-  // Light theme (for navbar top bar & mobile menu surface)
-  navBg:      '#FFFFFF',
-  navText:    '#0B1F3B',
-  navBorder:  '#E5E7EB',
-  navShadow:  '0 1px 8px rgba(11,31,59,0.06)',
-  navyBtn:    '#0B1F3B',
-  navyBtnHov: '#162A4B',
+  // Transparent Navy theme (for navbar top bar & mobile menu surface over video)
+  navBg:      'rgba(10, 22, 39, 0.85)',
+  navText:    '#FFFFFF',
+  navBorder:  'rgba(255, 255, 255, 0.1)',
+  navShadow:  '0 4px 30px rgba(0, 0, 0, 0.1)',
+  navyBtn:    '#F5C451',
+  navyBtnHov: '#fcd36c',
 };
 
 /* ─────────────────────────────────────────────
@@ -349,7 +349,7 @@ const NavyButton = ({ children, className = '', ...props }) => {
   return (
     <button
       className={`group inline-flex items-center justify-center font-[600] transition-all duration-200 rounded-[10px] px-6 py-3 text-[15px] leading-none ${className}`}
-      style={{ background: hov ? C.navyBtnHov : C.navyBtn, color: '#FFFFFF' }}
+      style={{ background: hov ? C.navyBtnHov : C.navyBtn, color: '#0A1627' }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       {...props}
@@ -509,11 +509,18 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="w-full transition-all duration-300"
       style={{
-        background:   C.navBg,
-        borderBottom: `1px solid ${C.navBorder}`,
-        boxShadow:    scrolled ? C.navShadow : 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        background:           C.navBg,
+        backdropFilter:       'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        borderBottom:         `1px solid ${C.navBorder}`,
+        boxShadow:            scrolled ? C.navShadow : 'none',
       }}
       aria-label="Main navigation"
     >
@@ -522,7 +529,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="flex-shrink-0 z-50">
-          <Logo theme="light" />
+          <Logo theme="dark" />
         </div>
 
         {/* Desktop nav */}
